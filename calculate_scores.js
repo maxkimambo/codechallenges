@@ -18,60 +18,56 @@
 *  Input for first challenge ["3", "2", "Z", "X", "+"] 
 */
 
-
 function calculateScore(throwRecords) {
-
-    let totalScore = 0;
-    let score = [];
-    let results = throwRecords.forEach((t, inx, records) => {
-        let tempScore = 0;
-        tempScore += isInteger(t);
-        tempScore += isX(t, score);
-        tempScore += isPlus(t, score);
-        // we memoise so that we dont calculate it again
-        // push here before Z happens 
-        if (tempScore) {
-            score.push(tempScore);
-        }
-
-
-        tempScore += isZ(t, score);
-
-        totalScore += tempScore;
-        return totalScore;
-    });
-
-    function isInteger(val) {
-        const score = Number(val);
-        return isNaN(score) ? 0 : score;
-    }
-    function isZ(val) {
-        if (val.toLowerCase().includes('z')) {
-            // remove previos score 
-            let prev = score.pop();
-            return prev * -1;
-        }
-        return 0;
+  let totalScore = 0;
+  let score = [];
+  let results = throwRecords.forEach((t, inx, records) => {
+    let tempScore = 0;
+    tempScore += isInteger(t);
+    tempScore += isX(t, score);
+    tempScore += isPlus(t, score);
+    // we memoise so that we dont calculate it again
+    // push here before Z happens
+    if (tempScore) {
+      score.push(tempScore);
     }
 
-    function isX(val, score) {
-        if (val.toLowerCase().includes("x") && score.length) {
-            let prevThrow = score[score.length - 1];
-            return prevThrow * 2;
-        }
-        return 0;
-    }
-
-    function isPlus(val, score) {
-        // check for the length of array
-        if (val.toLowerCase().includes('+') && (score.length - 2)) {
-            let prev1 = score[score.length - 1];
-            let prev2 = score[score.length - 2];
-            return prev1 + prev2;
-        }
-        return 0;
-    }
+    tempScore += isZ(t, score);
+    totalScore += tempScore;
     return totalScore;
+  });
+
+  function isInteger(val) {
+    const score = Number(val);
+    return isNaN(score) ? 0 : score;
+  }
+  function isZ(val) {
+    if (val.toLowerCase().includes("z")) {
+      // remove previos score
+      let prev = score.pop();
+      return prev * -1;
+    }
+    return 0;
+  }
+
+  function isX(val, score) {
+    if (val.toLowerCase().includes("x") && score.length) {
+      let prevThrow = score[score.length - 1];
+      return prevThrow * 2;
+    }
+    return 0;
+  }
+
+  function isPlus(val, score) {
+    // check for the length of array
+    if (val.toLowerCase().includes("+") && score.length - 2) {
+      let prev1 = score[score.length - 1];
+      let prev2 = score[score.length - 2];
+      return prev1 + prev2;
+    }
+    return 0;
+  }
+  return totalScore;
 }
 
-module.exports = calculateScore; 
+module.exports = calculateScore;
