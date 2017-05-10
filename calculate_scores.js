@@ -28,9 +28,15 @@ function calculateScore(throwRecords) {
         tempScore += isInteger(t);
         tempScore += isX(t, score);
         tempScore += isPlus(t, score);
+        // we memoise so that we dont calculate it again
+        // push here before Z happens 
+        if (tempScore) {
+            score.push(tempScore);
+        }
+
+
         tempScore += isZ(t, score);
 
-        score.push(tempScore); // we memoise so that we dont calculate it again
         totalScore += tempScore;
         return totalScore;
     });
@@ -39,7 +45,7 @@ function calculateScore(throwRecords) {
         const score = Number(val);
         return isNaN(score) ? 0 : score;
     }
-    function isZ(val, score) {
+    function isZ(val) {
         if (val.toLowerCase().includes('z')) {
             // remove previos score 
             let prev = score.pop();
@@ -65,7 +71,7 @@ function calculateScore(throwRecords) {
         }
         return 0;
     }
-    return totalScore; 
+    return totalScore;
 }
 
 module.exports = calculateScore; 
