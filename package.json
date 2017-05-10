@@ -1,0 +1,17 @@
+{
+  "name": "coding_challenges",
+  "version": "1.0.0",
+  "description": "Different coding challenges ",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Max Kimambo <max@kimambo.de> (http://www.kimambo.de/)",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^20.0.0"
+  },
+  "dependencies": {
+    "chai": "^3.5.0"
+  }
+}
