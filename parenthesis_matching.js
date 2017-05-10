@@ -1,7 +1,8 @@
 /**
  * Write a 'balancedParens' function that takes a string as input and returns a boolean 
  * — if the parentheses in the input string are 'balanced', then return true, else return false 
- * 
+ * The parens that are detected are the ones specified in openSymbols const, technically any tag specified
+ * here can be matched. 
 */
 function balancedParens(inputString) {
     // We will need an hashmap to hold 

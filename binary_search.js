@@ -13,9 +13,9 @@ function binarySearch(input, searchKey) {
     function seek(data, lowerBound, upperBound) {
         current = (lowerBound + upperBound) / 2;
         currentInt = parseInt(current);
-        console.log('lower :', lowerBound, 'current ', currentInt, 'upper :', upperBound); 
+        // console.log('lower :', lowerBound, 'current ', currentInt, 'upper :', upperBound); 
 
-         if (input[currentInt] === searchKey) {
+        if (input[currentInt] === searchKey) {
             return input[currentInt];
         } else if (lowerBound > upperBound) {
             return -1; // didnt find it. 
@@ -24,18 +24,18 @@ function binarySearch(input, searchKey) {
         if (searchKey > input[currentInt]) {
             // then the value we are looking for is in the upper part 
             lowerBound = currentInt + 1;
-            return seek(data, lowerBound, upperBound); 
+            return seek(data, lowerBound, upperBound);
         } else {
             // its in the lower part 
             upperBound = currentInt - 1;
             // we just need to look in the lower half 
-             return seek(data, lowerBound, upperBound); 
+            return seek(data, lowerBound, upperBound);
         }
     }
 
-    return seek(input, lower, upper); 
+    return seek(input, lower, upper);
 }
 
-module.exports = binarySearch; 
+module.exports = binarySearch;
 
 
