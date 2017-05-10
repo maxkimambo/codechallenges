@@ -3,6 +3,15 @@
  * — if the parentheses in the input string are 'balanced', then return true, else return false 
  * The parens that are detected are the ones specified in openSymbols const, technically any tag specified
  * here can be matched. 
+ * 
+ * Solution: 
+ * Normally this problem can be solved by using a Stack 
+ * you add opening symbols to the stack, when you encounter a closing symbol 
+ * you pop a symbol from the stack if the last symbol from the stack doesnt match
+ * the symbol that you processing then you have a mismatch and return false. 
+ * if till the end everything has matched, check that you have no left over items 
+ * in the stack. 
+ * 
 */
 function balancedParens(inputString) {
     // We will need an hashmap to hold 
