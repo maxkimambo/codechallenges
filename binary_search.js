@@ -15,13 +15,13 @@ function binarySearch(input, searchKey) {
         currentInt = parseInt(current);
         // console.log('lower :', lowerBound, 'current ', currentInt, 'upper :', upperBound); 
 
-        if (input[currentInt] === searchKey) {
-            return input[currentInt];
+        if (data[currentInt] === searchKey) {
+            return data[currentInt];
         } else if (lowerBound > upperBound) {
             return -1; // didnt find it. 
         }
         // check if its larger 
-        if (searchKey > input[currentInt]) {
+        if (searchKey > data[currentInt]) {
             // then the value we are looking for is in the upper part 
             lowerBound = currentInt + 1;
             return seek(data, lowerBound, upperBound);
